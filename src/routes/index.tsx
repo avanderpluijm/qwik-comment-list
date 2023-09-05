@@ -1,7 +1,7 @@
-import { component$ } from '@builder.io/qwik';
-import { routeAction$, routeLoader$, z, zod$ } from '@builder.io/qwik-city';
-import { CommentPanel } from '~/components/comment/panel';
-import { createComment, fetchComments } from '~/services/comment';
+import { component$ } from "@builder.io/qwik";
+import { routeAction$, routeLoader$ } from "@builder.io/qwik-city";
+import { CommentPanel } from "~/components/comment/panel";
+import { createComment, fetchComments } from "~/services/comment";
 
 // Create comment form handler
 export const useCreateComment = routeAction$(async (formData) =>

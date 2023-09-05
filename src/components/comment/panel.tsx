@@ -1,10 +1,10 @@
-import { component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
-import { CommentForm } from './form';
-import { CommentList } from './list';
-import { LoadMoreButton } from './load-more-button';
-import { fetchComments } from '~/services/comment';
-import { useInitialCommentsLoader } from '~/routes';
-import { Comment } from '~/types/comment';
+import { component$, useSignal, useStore, useTask$ } from "@builder.io/qwik";
+import { CommentForm } from "./form";
+import { CommentList } from "./list";
+import { LoadMoreButton } from "./load-more-button";
+import { fetchComments } from "~/services/comment";
+import { useInitialCommentsLoader } from "~/routes";
+import { type Comment } from "~/types/comment";
 
 export const CommentPanel = component$(() => {
   const currentPage = useSignal<number>(0);
