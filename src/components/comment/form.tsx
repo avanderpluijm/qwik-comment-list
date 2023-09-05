@@ -1,12 +1,22 @@
-import { component$ } from "@builder.io/qwik";
+import { type Signal, component$ } from "@builder.io/qwik";
 import { Form } from "@builder.io/qwik-city";
 import { useCreateComment } from "~/routes";
+import { type Comment } from "~/types/comment";
 
-export const CommentForm = component$(() => {
+interface Props {
+  submitResultSig: Signal<Comment | undefined>;
+}
+
+export const CommentForm = component$(({ submitResultSig }: Props) => {
   const actionSig = useCreateComment();
 
   return (
-    <Form action={actionSig}>
+    <Form
+      action={actionSig}
+      onSubmitCompleted$={() => {
+        submitResultSig.value = actionSig.value as Comment;
+      }}
+    >
       <input type="text" name="message" placeholder="comment" />
       <button type="submit">Comment</button>
       {actionSig.value?.id && (

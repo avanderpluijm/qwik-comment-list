@@ -11,6 +11,13 @@ export const CommentPanel = component$(() => {
   const initialData = useInitialCommentsLoader();
   const dataToDisplay = useStore<Comment[]>(initialData.value);
   const newComments = useSignal<Comment[]>([]);
+  const formComment = useSignal<Comment>();
+
+  useTask$(({ track }) => {
+    const data = track(() => formComment.value);
+    if (!data) return;
+    dataToDisplay.unshift(data);
+  });
 
   useTask$(({ track }) => {
     const data = track(() => newComments.value);
@@ -21,12 +28,12 @@ export const CommentPanel = component$(() => {
   useTask$(async ({ track }) => {
     const newRange = track(() => currentPage.value);
     if (!newRange) return;
-    newComments.value = fetchComments(5, newRange);
+    newComments.value = fetchComments();
   });
 
   return (
     <>
-      <CommentForm />
+      <CommentForm submitResultSig={formComment} />
       <CommentList items={dataToDisplay} />
       <LoadMoreButton currentPage={currentPage} />
     </>

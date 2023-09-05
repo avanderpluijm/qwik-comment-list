@@ -1,8 +1,6 @@
-import { component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
-import { CommentListItem } from './list-item';
-import { useInitialCommentsLoader } from '~/routes';
-import { fetchComments } from '~/services/comment';
-import { Comment } from '~/types/comment';
+import { component$ } from "@builder.io/qwik";
+import { CommentListItem } from "./list-item";
+import { type Comment } from "~/types/comment";
 
 interface Props {
   items: Comment[];

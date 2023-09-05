@@ -1,5 +1,5 @@
-import { component$ } from '@builder.io/qwik';
-import { Comment } from '~/types/comment';
+import { component$ } from "@builder.io/qwik";
+import { type Comment } from "~/types/comment";
 
 interface Props {
   comment: Comment;

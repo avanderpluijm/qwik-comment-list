@@ -5,7 +5,7 @@ import { createComment, fetchComments } from "~/services/comment";
 
 // Create comment form handler
 export const useCreateComment = routeAction$(async (formData) =>
-  createComment({ ...formData })
+  createComment(formData.message as string)
 );
 
 // Post information RouteLoader
