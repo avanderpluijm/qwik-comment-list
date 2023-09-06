@@ -1,5 +1,7 @@
 import { component$, Slot } from '@builder.io/qwik';
-import type { RequestHandler } from '@builder.io/qwik-city';
+import { RequestHandler, routeLoader$ } from '@builder.io/qwik-city';
+import { PostNav } from '~/components/post/nav';
+import { getPosts } from '~/services/post';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -12,10 +14,17 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
   });
 };
 
-export default component$(() => (
-  <>
-    <main>
-      <Slot />
-    </main>
-  </>
-));
+export const useGetPosts = routeLoader$(() => getPosts());
+export default component$(() => {
+  const posts = useGetPosts();
+  return (
+    <>
+      <main>
+        <header>
+          <PostNav posts={posts.value} />
+        </header>
+        <Slot />
+      </main>
+    </>
+  );
+});
