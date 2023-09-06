@@ -4,11 +4,6 @@ interface Props {
   currentPage: Signal<number>;
 }
 
-export const LoadMoreButton = component$<Props>((props) => {
-  const { currentPage } = props;
-  return (
-    <button onClick$={() => (currentPage.value = currentPage.value + 1)}>
-      Load More
-    </button>
-  );
-});
+export const LoadMoreButton = component$<Props>((props) => (
+  <button onClick$={() => (props.currentPage.value = props.currentPage.value + 1)}>Load More</button>
+));

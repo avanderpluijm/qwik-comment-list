@@ -13,6 +13,7 @@ export const CommentForm = component$(({ submitResultSig }: Props) => {
   return (
     <Form
       action={actionSig}
+      // Update the submit signal so the CommentPanel can add the result to the display list
       onSubmitCompleted$={() => {
         submitResultSig.value = actionSig.value as Comment;
       }}
