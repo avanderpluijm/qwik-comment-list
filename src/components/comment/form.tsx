@@ -1,6 +1,6 @@
 import { type Signal, component$ } from "@builder.io/qwik";
 import { Form } from "@builder.io/qwik-city";
-import { useCreateComment } from "~/routes";
+import { useCreateComment } from "~/routes/post/[slug]";
 import { type Comment } from "~/types/comment";
 
 interface Props {

@@ -3,11 +3,11 @@ import { CommentForm } from "./form";
 import { CommentList } from "./list";
 import { LoadMoreButton } from "./load-more-button";
 import { fetchComments } from "~/services/comment";
-import { useInitialCommentsLoader } from "~/routes";
 import { type Comment } from "~/types/comment";
+import { useInitialCommentsLoader } from "~/routes/post/[slug]";
 
-// Parent comment for the comments list. 
-// All state changes related to the comments are centralised in this panel 
+// Parent comment for the comments list.
+// All state changes related to the comments are centralised in this panel
 export const CommentPanel = component$(() => {
   const currentPage = useSignal<number>(0);
   // Initial data that is server side fetched with a routeloader
